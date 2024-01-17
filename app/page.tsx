@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import { Content } from "@/components/home/content";
+import { ComputeShare } from "@/components/computeshare";
 
 const Home: NextPage = () => {
-  return <Content />;
+  return <ComputeShare />;
 };
 
 export default Home;

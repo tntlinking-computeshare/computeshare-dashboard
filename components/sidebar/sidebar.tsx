@@ -118,7 +118,7 @@ export const SidebarWrapper = () => {
             </Tooltip>
             <Tooltip content={"Profile"} color="primary">
               <Avatar
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                src=""
                 size="sm"
               />
             </Tooltip>

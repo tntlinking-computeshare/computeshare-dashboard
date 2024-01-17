@@ -35,7 +35,7 @@ export const Content = () => (
         <div className="h-full flex flex-col gap-2">
           <h3 className="text-xl font-semibold">Statistics</h3>
           <div className="w-full bg-default-50 shadow-lg rounded-2xl p-6 ">
-            <Chart />
+            {/*<Chart/>*/}
           </div>
         </div>
       </div>

@@ -19,8 +19,8 @@ interface Company {
 
 export const CompaniesDropdown = () => {
   const [company, setCompany] = useState<Company>({
-    name: "Acme Co.",
-    location: "Palo Alto, CA",
+    name: "共享算力",
+    location: "Shanghai",
     logo: <AcmeIcon />,
   });
   return (
