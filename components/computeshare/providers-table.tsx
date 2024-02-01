@@ -36,20 +36,22 @@ const columns = [
     }
 ];
 
-export default function ProvidersTable() {
+export default function ProvidersTable(props: { refreshTime: number; }) {
+
+
+    const { refreshTime } = props;
 
     const [rows, setRows] = useState([
         {
-            mac: "sss"
+            mac: ""
         }
     ])
 
     useEffect(()=> {
         apiProvidersList().then(data => {
-            console.log(data)
             setRows(data)
         })
-    },[])
+    },[refreshTime])
 
     const renderCell = React.useCallback((item:any, columnKey:any) => {
         const cellValue = item[columnKey];

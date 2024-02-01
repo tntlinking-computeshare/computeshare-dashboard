@@ -11,7 +11,9 @@ const items = [
   }
 ];
 
-export const CardInstances = () => {
+export const CardInstances = (props: { refreshTime: number; }) => {
+  const { refreshTime } = props;
+
   return (
     <Card className=" bg-default-50 rounded-xl shadow-md px-3">
       <CardBody className="py-5 gap-4">

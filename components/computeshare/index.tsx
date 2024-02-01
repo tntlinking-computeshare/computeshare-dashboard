@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {CardStorage} from "@/components/computeshare/card-storage";
 import {CardGateway} from "@/components/computeshare/card-gateway";
 import {Link} from "@nextui-org/react";
@@ -9,6 +9,22 @@ import {CardCycle} from "@/components/computeshare/card-cycle";
 import ProvidersTable from "@/components/computeshare/providers-table";
 
 export const ComputeShare = () => {
+
+    const [apiTime,setApiTime] = useState(new Date().getTime())
+
+    const refreshApiTime = () => {
+        setApiTime(new Date().getTime())
+    }
+
+    useEffect(() => {
+        // 设置定时器，每隔一段时间调用一次fetchData函数
+        const intervalId = setInterval(refreshApiTime, 5000); // 每60秒请求一次
+
+        // 在组件卸载时清除定时器，以防止内存泄漏
+        return () => clearInterval(intervalId);
+
+    },[])
+
     return (
         <div className="h-full lg:px-6">
             <div className="flex justify-center gap-4 xl:gap-6 pt-3 px-4 lg:px-0  flex-wrap xl:flex-nowrap sm:pt-10 max-w-[90rem] mx-auto w-full">
@@ -17,9 +33,9 @@ export const ComputeShare = () => {
                     <div className="flex flex-col gap-2">
                         <h3 className="text-xl font-semibold">共享算力数据大屏</h3>
                         <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-3 gap-5  justify-center w-full">
-                            <CardStorage />
-                            <CardGateway />
-                            <CardCycle/>
+                            <CardStorage refreshTime={apiTime} />
+                            <CardGateway  refreshTime={apiTime} />
+                            <CardCycle refreshTime={apiTime} />
                         </div>
                     </div>
                 </div>
@@ -28,7 +44,7 @@ export const ComputeShare = () => {
                 <div className="mt-4 gap-2 flex flex-col xl:max-w-md w-full">
                     <h3 className="text-xl font-semibold">Section</h3>
                     <div className="flex flex-col justify-center gap-4 flex-wrap md:flex-nowrap md:flex-col">
-                        <CardInstances />
+                        <CardInstances refreshTime={apiTime} />
                     </div>
                 </div>
             </div>
@@ -46,7 +62,7 @@ export const ComputeShare = () => {
                         View All
                     </Link>
                 </div>
-                <ProvidersTable />
+                <ProvidersTable refreshTime={apiTime} />
             </div>
         </div>
     )

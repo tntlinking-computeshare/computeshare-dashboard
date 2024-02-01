@@ -3,7 +3,9 @@ import React, {useEffect, useState} from "react";
 import { Community } from "../icons/community";
 import {apiGatewayList, apiGatewaysCount} from "@/components/api/computeshare";
 
-export const CardGateway = () => {
+export const CardGateway = (props: { refreshTime: number; }) => {
+
+  const { refreshTime } = props;
 
   const [gatewayCount,setGatewayCount] = useState(0)
 
@@ -22,7 +24,7 @@ export const CardGateway = () => {
     apiGatewaysCount().then(data => {
       setGatewayCount(data)
     })
-  },[])
+  },[refreshTime])
 
   return (
     <Card className="xl:max-w-sm bg-success rounded-xl shadow-md px-3 w-full">

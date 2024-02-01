@@ -4,7 +4,9 @@ import React, {useEffect, useState} from "react";
 import { Community } from "../icons/community";
 import {apiGatewaysCount, apiProvidersCount, apiStorageCount} from "@/components/api/computeshare";
 
-export const CardStorage = () => {
+export const CardStorage = (props: { refreshTime: number; }) => {
+
+  const { refreshTime } = props;
 
   const [providers,setProviders] = useState(0)
   const [gatewayCount, setGatewayCount] = useState(0)
@@ -12,7 +14,7 @@ export const CardStorage = () => {
     apiStorageCount().then(data => {}).finally()
     apiProvidersCount().then(data => setProviders(data))
     apiGatewaysCount().then(data => setGatewayCount(data))
-  },[])
+  },[refreshTime])
 
 
   return (

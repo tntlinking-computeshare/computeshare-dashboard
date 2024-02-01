@@ -4,8 +4,9 @@ import React, {useEffect, useState} from "react";
 import { Community } from "../icons/community";
 import {apiCycleCount} from "@/components/api/computeshare";
 
-export const CardCycle = () => {
+export const CardCycle = (props: { refreshTime: number; }) => {
 
+  const { refreshTime } = props;
 
   const [cycleInfo, setCycleInfo] = useState({
     "grantTotal": "",
@@ -15,10 +16,12 @@ export const CardCycle = () => {
   })
 
   useEffect(() => {
+
     apiCycleCount().then(data => {
       setCycleInfo(data)
     })
-  },[])
+
+  },[refreshTime])
 
   return (
     <Card className="xl:max-w-sm bg-default-50 rounded-xl shadow-md px-3 w-full">
