@@ -1,18 +1,49 @@
-import { Avatar, Card, CardBody } from "@nextui-org/react";
-import React from "react";
-
-const items = [
-  {
-    id: "1",
-    name: "Instance1",
-    sepc: "2C4G",
-    user: "张三",
-    date: "9/20/2021",
-  }
-];
+import {Card, CardBody} from "@nextui-org/react";
+import React, {useEffect, useState} from "react";
+import moment from 'moment';
+import {apiInstancesCount} from "@/components/api/computeshare";
 
 export const CardInstances = (props: { refreshTime: number; }) => {
   const { refreshTime } = props;
+  const [instancesCount, setInstancesCount] = useState([
+    {
+      id: "",
+      name: "",
+      specs: "",
+      owner: "",
+      createTime: "",
+    }
+  ])
+  useEffect(() => {
+    apiInstancesCount().then(data => {
+      const formattedData = data.map((instance: { createTime: number; }) => {
+        // 在这里对 createTime 进行格式转换
+        const formattedCreateTime = moment(instance.createTime).format("YYYY-MM-DD");
+        return {
+          ...instance,
+          createTime: formattedCreateTime,
+        };
+      });
+
+      setInstancesCount(formattedData);
+    });
+  }, [refreshTime]);
+
+  const formatMillisecondsToDate = (milliseconds: number): string => {
+    console.log("获取的时间是",milliseconds)
+    if (!isValidTimestamp(milliseconds)) {
+      return "Invalid Date";
+    }
+
+    const date = new Date(milliseconds);
+    console.log("newDate是",date)
+    const options: Intl.DateTimeFormatOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    return formattedDate;
+  };
+  const isValidTimestamp = (value: number): boolean => {
+    return !isNaN(value) && value > 0;
+  };
 
   return (
     <Card className=" bg-default-50 rounded-xl shadow-md px-3">
@@ -26,20 +57,20 @@ export const CardInstances = (props: { refreshTime: number; }) => {
         </div>
 
         <div className="flex flex-col gap-6 ">
-          {items.map((item) => (
+          {instancesCount.map((item) => (
             <div key={item.id} className="grid grid-cols-4 w-full">
               <div className="w-full">
                 {item.name}
               </div>
 
               <span className="text-default-900  font-semibold">
-                {item.sepc}
+                {item.specs}
               </span>
               <div>
-                <span className="text-default-900 text-xs">{item.user}</span>
+                <span className="text-default-900 text-xs">{item.owner}</span>
               </div>
               <div>
-                <span className="text-default-500 text-xs">{item.date}</span>
+                <span className="text-default-500 text-xs">{item.createTime}</span>
               </div>
             </div>
           ))}

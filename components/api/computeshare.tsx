@@ -140,3 +140,20 @@ export const apiStorageCount = async ()=> {
         return 0
     }
 }
+
+export const apiInstancesCount = async ()=> {
+    try{
+        const res = await fetch("/api/v1/dashboard/instances/count",
+            {
+                cache:'no-store',
+                mode: 'no-cors'
+            }
+        )
+        const data = await res.json();
+        return data.data
+
+    }catch (err) {
+        console.log(err)
+        return 0
+    }
+}
