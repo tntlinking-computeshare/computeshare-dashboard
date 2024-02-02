@@ -1,6 +1,7 @@
 import {Card, CardBody} from "@nextui-org/react";
 import React, {useEffect, useState} from "react";
-import moment from 'moment';
+import Moment from 'react-moment';
+import 'moment-timezone';
 import {apiInstancesCount} from "@/components/api/computeshare";
 
 export const CardInstances = (props: { refreshTime: number; }) => {
@@ -16,34 +17,13 @@ export const CardInstances = (props: { refreshTime: number; }) => {
   ])
   useEffect(() => {
     apiInstancesCount().then(data => {
-      const formattedData = data.map((instance: { createTime: number; }) => {
-        // 在这里对 createTime 进行格式转换
-        const formattedCreateTime = moment(instance.createTime).format("YYYY-MM-DD");
-        return {
-          ...instance,
-          createTime: formattedCreateTime,
-        };
+      const formattedData = data.map((instance: any) => {
+          return instance
       });
 
       setInstancesCount(formattedData);
     });
   }, [refreshTime]);
-
-  const formatMillisecondsToDate = (milliseconds: number): string => {
-    console.log("获取的时间是",milliseconds)
-    if (!isValidTimestamp(milliseconds)) {
-      return "Invalid Date";
-    }
-
-    const date = new Date(milliseconds);
-    console.log("newDate是",date)
-    const options: Intl.DateTimeFormatOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
-    return formattedDate;
-  };
-  const isValidTimestamp = (value: number): boolean => {
-    return !isNaN(value) && value > 0;
-  };
 
   return (
     <Card className=" bg-default-50 rounded-xl shadow-md px-3">
@@ -70,7 +50,11 @@ export const CardInstances = (props: { refreshTime: number; }) => {
                 <span className="text-default-900 text-xs">{item.owner}</span>
               </div>
               <div>
-                <span className="text-default-500 text-xs">{item.createTime}</span>
+                <span className="text-default-500 text-xs">
+                  {item.createTime}
+                  {/* 要求格式：1706869444， 实际返回1706789448000*/}
+                  <Moment  format="YYYY-MM-DD HH:mm:ss" unix >1706869444</Moment>
+                </span>
               </div>
             </div>
           ))}
