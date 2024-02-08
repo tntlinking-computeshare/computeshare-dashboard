@@ -45,65 +45,65 @@ export const SidebarWrapper = () => {
               isActive={pathname === "/"}
               href="/"
             />
-            <SidebarMenu title="Main Menu">
-              <SidebarItem
-                isActive={pathname === "/accounts"}
-                title="Accounts"
-                icon={<AccountsIcon />}
-                href="accounts"
-              />
-              <SidebarItem
-                isActive={pathname === "/payments"}
-                title="Payments"
-                icon={<PaymentsIcon />}
-              />
-              <CollapseItems
-                icon={<BalanceIcon />}
-                items={["Banks Accounts", "Credit Cards", "Loans"]}
-                title="Balances"
-              />
-              <SidebarItem
-                isActive={pathname === "/customers"}
-                title="Customers"
-                icon={<CustomersIcon />}
-              />
-              <SidebarItem
-                isActive={pathname === "/products"}
-                title="Products"
-                icon={<ProductsIcon />}
-              />
-              <SidebarItem
-                isActive={pathname === "/reports"}
-                title="Reports"
-                icon={<ReportsIcon />}
-              />
-            </SidebarMenu>
+            {/*<SidebarMenu title="Main Menu">*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/accounts"}*/}
+            {/*    title="Accounts"*/}
+            {/*    icon={<AccountsIcon />}*/}
+            {/*    href="accounts"*/}
+            {/*  />*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/payments"}*/}
+            {/*    title="Payments"*/}
+            {/*    icon={<PaymentsIcon />}*/}
+            {/*  />*/}
+            {/*  <CollapseItems*/}
+            {/*    icon={<BalanceIcon />}*/}
+            {/*    items={["Banks Accounts", "Credit Cards", "Loans"]}*/}
+            {/*    title="Balances"*/}
+            {/*  />*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/customers"}*/}
+            {/*    title="Customers"*/}
+            {/*    icon={<CustomersIcon />}*/}
+            {/*  />*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/products"}*/}
+            {/*    title="Products"*/}
+            {/*    icon={<ProductsIcon />}*/}
+            {/*  />*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/reports"}*/}
+            {/*    title="Reports"*/}
+            {/*    icon={<ReportsIcon />}*/}
+            {/*  />*/}
+            {/*</SidebarMenu>*/}
 
-            <SidebarMenu title="General">
-              <SidebarItem
-                isActive={pathname === "/developers"}
-                title="Developers"
-                icon={<DevIcon />}
-              />
-              <SidebarItem
-                isActive={pathname === "/view"}
-                title="View Test Data"
-                icon={<ViewIcon />}
-              />
-              <SidebarItem
-                isActive={pathname === "/settings"}
-                title="Settings"
-                icon={<SettingsIcon />}
-              />
-            </SidebarMenu>
+            {/*<SidebarMenu title="General">*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/developers"}*/}
+            {/*    title="Developers"*/}
+            {/*    icon={<DevIcon />}*/}
+            {/*  />*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/view"}*/}
+            {/*    title="View Test Data"*/}
+            {/*    icon={<ViewIcon />}*/}
+            {/*  />*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/settings"}*/}
+            {/*    title="Settings"*/}
+            {/*    icon={<SettingsIcon />}*/}
+            {/*  />*/}
+            {/*</SidebarMenu>*/}
 
-            <SidebarMenu title="Updates">
-              <SidebarItem
-                isActive={pathname === "/changelog"}
-                title="Changelog"
-                icon={<ChangeLogIcon />}
-              />
-            </SidebarMenu>
+            {/*<SidebarMenu title="Updates">*/}
+            {/*  <SidebarItem*/}
+            {/*    isActive={pathname === "/changelog"}*/}
+            {/*    title="Changelog"*/}
+            {/*    icon={<ChangeLogIcon />}*/}
+            {/*  />*/}
+            {/*</SidebarMenu>*/}
           </div>
           <div className={Sidebar.Footer()}>
             <Tooltip content={"Settings"} color="primary">

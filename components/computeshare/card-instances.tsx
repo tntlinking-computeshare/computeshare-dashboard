@@ -17,8 +17,12 @@ export const CardInstances = (props: { refreshTime: number; }) => {
   ])
   useEffect(() => {
     apiInstancesCount().then(data => {
-      const formattedData = data.map((instance: any) => {
-          return instance
+      const formattedData = data.map((instance: { createTime: number; }) => {
+        const formattedCreateTime = instance.createTime / 1000;
+        return {
+          ...instance,
+          createTime: formattedCreateTime,
+        };
       });
 
       setInstancesCount(formattedData);
@@ -51,9 +55,7 @@ export const CardInstances = (props: { refreshTime: number; }) => {
               </div>
               <div>
                 <span className="text-default-500 text-xs">
-                  {item.createTime}
-                  {/* 要求格式：1706869444， 实际返回1706789448000*/}
-                  <Moment  format="YYYY-MM-DD HH:mm:ss" unix >1706869444</Moment>
+                  <Moment  format="DD/MM/YYYY" unix >{item.createTime}</Moment>
                 </span>
               </div>
             </div>

@@ -41,12 +41,12 @@ export const NavbarWrapper = ({ children }: Props) => {
           justify="end"
           className="w-fit data-[justify=end]:flex-grow-0"
         >
-          <div className="flex items-center gap-2 max-md:hidden">
-            <FeedbackIcon />
-            <span>Feedback?</span>
-          </div>
+          {/*<div className="flex items-center gap-2 max-md:hidden">*/}
+          {/*  <FeedbackIcon />*/}
+          {/*  <span>Feedback?</span>*/}
+          {/*</div>*/}
 
-          <NotificationsDropdown />
+          {/*<NotificationsDropdown />*/}
 
           <div className="max-md:hidden">
             <SupportIcon />
@@ -58,9 +58,9 @@ export const NavbarWrapper = ({ children }: Props) => {
           >
             <GithubIcon />
           </Link>
-          <NavbarContent>
-            <UserDropdown />
-          </NavbarContent>
+          {/*<NavbarContent>*/}
+          {/*  <UserDropdown />*/}
+          {/*</NavbarContent>*/}
         </NavbarContent>
       </Navbar>
       {children}

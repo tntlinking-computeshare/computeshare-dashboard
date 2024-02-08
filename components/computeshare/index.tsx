@@ -1,10 +1,13 @@
 "use client";
 import React, {useEffect, useState} from "react";
 import {CardStorage} from "@/components/computeshare/card-storage";
+import {CardS3Key} from "@/components/computeshare/card-s3-key";
 import {CardGateway} from "@/components/computeshare/card-gateway";
 import {Link} from "@nextui-org/react";
 import NextLink from "next/link";
 import {CardInstances} from "@/components/computeshare/card-instances";
+import {CardProvidersVolumes} from "@/components/computeshare/card-providers-volumes";
+import {CardBucketsVolumes} from "@/components/computeshare/card-buckets-volumes";
 import {CardCycle} from "@/components/computeshare/card-cycle";
 import ProvidersTable from "@/components/computeshare/providers-table";
 
@@ -35,7 +38,10 @@ export const ComputeShare = () => {
                         <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-3 gap-5  justify-center w-full">
                             <CardStorage refreshTime={apiTime} />
                             <CardGateway  refreshTime={apiTime} />
+                            <CardS3Key refreshTime={apiTime} />
                             <CardCycle refreshTime={apiTime} />
+                            <CardProvidersVolumes refreshTime={apiTime} />
+                            <CardBucketsVolumes refreshTime={apiTime} />
                         </div>
                     </div>
                 </div>

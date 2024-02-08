@@ -63,7 +63,6 @@ export const apiGatewayList = async function () {
             }
         )
         const data = await res.json();
-        console.log(data.data)
         return data.data
 
     }catch (err) {
@@ -144,6 +143,57 @@ export const apiStorageCount = async ()=> {
 export const apiInstancesCount = async ()=> {
     try{
         const res = await fetch("/api/v1/dashboard/instances/count",
+            {
+                cache:'no-store',
+                mode: 'no-cors'
+            }
+        )
+        const data = await res.json();
+        return data.data
+
+    }catch (err) {
+        console.log(err)
+        return 0
+    }
+}
+
+export const apiProvidersVolumesList = async ()=> {
+    try{
+        const res = await fetch("/api/v1/dashboard/providers/volumes/count",
+            {
+                cache:'no-store',
+                mode: 'no-cors'
+            }
+        )
+        const data = await res.json();
+        return data.data
+
+    }catch (err) {
+        console.log(err)
+        return 0
+    }
+}
+
+export const apiBucketsVolumesList = async ()=> {
+    try{
+        const res = await fetch("/api/v1/dashboard/buckets/volumes/count",
+            {
+                cache:'no-store',
+                mode: 'no-cors'
+            }
+        )
+        const data = await res.json();
+        return data.data
+
+    }catch (err) {
+        console.log(err)
+        return 0
+    }
+}
+
+export const apiS3KeyCallCount = async ()=> {
+    try{
+        const res = await fetch("/api/v1/dashboard/s3_key/call/count",
             {
                 cache:'no-store',
                 mode: 'no-cors'
