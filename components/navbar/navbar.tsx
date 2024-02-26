@@ -7,6 +7,7 @@ import { SearchIcon } from "../icons/searchicon";
 import { BurguerButton } from "./burguer-button";
 import { NotificationsDropdown } from "./notifications-dropdown";
 import { UserDropdown } from "./user-dropdown";
+import {DarkModeSwitch} from "@/components/navbar/darkmodeswitch";
 
 interface Props {
   children: React.ReactNode;
@@ -61,6 +62,7 @@ export const NavbarWrapper = ({ children }: Props) => {
           {/*<NavbarContent>*/}
           {/*  <UserDropdown />*/}
           {/*</NavbarContent>*/}
+          <DarkModeSwitch />
         </NavbarContent>
       </Navbar>
       {children}
